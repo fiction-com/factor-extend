@@ -1,0 +1,16 @@
+{
+  "name": "@factor-example/commentizer",
+  "author": "",
+  "version": "1.0.0",
+  "license": "GPL-2.0",
+  "factor": {
+    "target": [
+      "app",
+      "server"
+    ]
+  },
+  "dependencies": {
+    "@factor/core": "^1.0.0-alpha.28",
+    "@factor-plugin/commentizer": "^1.0.0-alpha.28"
+  }
+}
