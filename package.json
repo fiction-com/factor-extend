@@ -1,0 +1,36 @@
+{
+  "name": "@factor-extend/monorepo",
+  "author": "Fiction.com <support@fiction.com> (https://www.fiction.com)",
+  "version": "0.0.1",
+  "workspaces": [
+    "@plugins/*",
+    "@themes/*"
+  ],
+  "private": true,
+  "license": "GPL-2.0",
+  "scripts": {},
+  "dependencies": {
+    "@factor/core": "1.0.0-alpha.28"
+  },
+  "devDependencies": {
+    "all-contributors-cli": "^6.7.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^3.5.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-babel": "^5.3.0",  
+    "eslint-plugin-html": "^5.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-unicorn": "^8.0.2",
+    "eslint-plugin-vue": "^5.1.0",
+    "execa": "^1.0.0",
+    "lerna": "^3.13.0",
+    "prettier": "^1.17.1",
+    "prettier-eslint": "^8.8.2",
+    "webpack": "^4.29.6"
+  }
+}
