@@ -1,6 +1,7 @@
 {
   "name": "@factor-example/commentizer",
-  "author": "",
+  "author": "<chpmnrssll@gmail.com>",
+  "main": "src/index.js",
   "version": "1.0.0",
   "license": "GPL-2.0",
   "factor": {

@@ -23,5 +23,5 @@ files["userServer"] = require("@factor/core-user/server").default
 files["userEmailsServer"] = require("@factor/core-user-emails/server").default
 files["userRolesServer"] = require("@factor/core-user-roles/server").default
 files["webpack"] = require("@factor/build-webpack").default
-files["cwd"] = require("../index.js").default
+files["cwd"] = require("../src/index.js").default
 module.exports = files
