@@ -10,7 +10,7 @@
     ]
   },
   "dependencies": {
-    "@factor/core": "^1.0.0-alpha.28",
-    "@factor-plugin/commentizer": "^1.0.0-alpha.28"
+    "@factor/core": "^1.0.0-alpha.29",
+    "@factor-plugin/commentizer": "^1.0.0-alpha.29"
   }
 }
