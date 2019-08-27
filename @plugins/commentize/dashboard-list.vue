@@ -11,7 +11,7 @@
       @action="$emit('action',{action: $event, selected})"
     />
     <dashboard-table
-      class="contact-form-table"
+      class="commentizer-table"
       :structure="tableStructure()"
       :row-items="tableList"
       @select-all="selectAll($event)"
@@ -20,13 +20,13 @@
         <div v-if="column == 'select'">
           <input v-model="selected" type="checkbox" class="checkbox" label :value="row._id" >
         </div>
-        <div v-if="column == 'info'" class="contact-info">
+        <div v-if="column == 'info'" class="commentizer-info">
           <div v-for="([key, value], i) in fields(row, column)" :key="i" class="dat">
             <strong>{{ $utils.toLabel(key) }}:</strong>
             <i>{{ value }}</i>
           </div>
         </div>
-        <div v-if="column == 'message'" class="contact-message">{{ row.message }}</div>
+        <div v-if="column == 'message'" class="commentizer-message">{{ row.message }}</div>
 
         <div v-if="column == 'created'" class="meta">{{ $time.niceFormat(row.createdAt) }}</div>
       </template>
@@ -126,13 +126,13 @@ export default {
 }
 </script>
 <style lang="less">
-.contact-form-table {
+.commentizer-table {
   .dbt-body-row {
     font-size: 0.85em;
     .message {
       line-height: 1.4;
     }
-    .contact-info {
+    .commentizer-info {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 10px;
