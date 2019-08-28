@@ -1,6 +1,7 @@
 <template>
-  <dashboard-pane :title="title">
-    <dashboard-table-controls
+  <div class="edit-post-seo">
+    Comments panel
+    <!-- <dashboard-table-controls
       v-bind="$attrs"
       :tabs="tabs"
       filter="status"
@@ -30,13 +31,17 @@
 
         <div v-if="column == 'created'" class="meta">{{ $time.niceFormat(row.createdAt) }}</div>
       </template>
-    </dashboard-table>
-  </dashboard-pane>
+    </dashboard-table> -->
+  </div>
 </template>
-  <script>
+<script>
 export default {
-  name: "CommentList",
+  // model: {
+  //   prop: "post",
+  //   event: "change"
+  // },
   props: {
+    postId: { type: String, required: true },
     title: { type: String, default: "" },
     list: { type: Array, default: () => [] },
     meta: { type: Object, default: () => {} },
@@ -50,7 +55,11 @@ export default {
     }
   },
   computed: {
+    // post() {
+    //   return this.$
+    // },
     tableList() {
+      console.log(this);
       return this.list.map(({ _id, createdAt, settings }) => {
         return {
           ...settings,
@@ -61,18 +70,18 @@ export default {
     },
     tabs() {
       return [`all`, `trash`].map(key => {
-        const count =
-          key == "all"
-            ? this.meta.total
-            : this.$post.getStatusCount({
-                meta: this.meta,
-                key
-              })
+        // const count =
+        //   key == "all"
+        //     ? this.meta.total
+        //     : this.$post.getStatusCount({
+        //         meta: this.meta,
+        //         key
+        //       })
 
         return {
           name: this.$utils.toLabel(key),
           value: key == "all" ? "" : key,
-          count
+          count: 0
         }
       })
     },
@@ -85,7 +94,6 @@ export default {
       })
     }
   },
-
   methods: {
     selectAll(val) {
       this.selected = !val ? [] : this.list.map(_ => _._id)
@@ -126,21 +134,24 @@ export default {
 }
 </script>
 <style lang="less">
-.commentizer-table {
-  .dbt-body-row {
-    font-size: 0.85em;
-    .message {
-      line-height: 1.4;
+.edit-post-seo {
+  .search-preview {
+    line-height: 1.5;
+    padding: 0em 0 2em;
+    .sup {
+      opacity: 0.3;
+      margin-bottom: 1em;
     }
-    .commentizer-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 10px;
-      .dat {
-        strong {
-          display: block;
-        }
-      }
+    .headline {
+      line-height: 1.3;
+      color: #1b1ba8;
+      font-size: 1.3em;
+    }
+    .desc {
+      opacity: 0.7;
+    }
+    .plink {
+      color: #0a6524;
     }
   }
 }

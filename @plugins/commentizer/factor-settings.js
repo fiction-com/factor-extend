@@ -1,7 +1,6 @@
 module.exports.default = Factor => {
   return {
-    commentize: {
-      comment: () => import("./comment"),
+    commentizer: {
       submitText: "Add Comment",
       inputFormat: "horizontal",
       confirm: {
@@ -10,13 +9,13 @@ module.exports.default = Factor => {
       },
       layout: [
         {
-          label: "Your Name",
+          label: "Name",
           _id: "name",
           inputType: "text",
           required: true
         },
         {
-          label: "Your Email",
+          label: "Email",
           _id: "email",
           inputType: "email",
           required: true
@@ -26,7 +25,10 @@ module.exports.default = Factor => {
           _id: "message",
           inputType: "textarea"
         }
-      ]
+      ],
+      components: {
+        commentsList: () => import("./comments-list")
+      }
     }
   }
 }
