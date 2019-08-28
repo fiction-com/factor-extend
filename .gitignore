@@ -16,3 +16,5 @@ yarn-error*
 *secrets*
 
 *.log
+
+**/.factor
