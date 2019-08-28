@@ -1,6 +1,6 @@
 <template>
   <div class="single-entry">
-    comments list component
+    add comment component
     <!-- <div v-if="!$lodash.isEmpty(post)">
       <component
         :is="$setting.get(`blog.components.${comp}`)"

@@ -27,7 +27,8 @@ module.exports.default = Factor => {
         }
       ],
       components: {
-        commentsList: () => import("./comments-list")
+        commentsList: () => import("./comments-list"),
+        commentAdd: () => import("./comment-add")
       }
     }
   }

@@ -2,7 +2,10 @@ export default Factor => {
   return new (class {
     constructor() {
       this.postType = "comments"
+      this.filters()
+    }
 
+    filters() {
       // Factor.$filters.add("post-types", _ => {
       //   _.push({
       //     postType: this.postType,
@@ -16,22 +19,30 @@ export default Factor => {
       //   return _
       // })
 
+      // Factor.$filters.add("post-schema", _ => {
+      //   return {
+      //     ..._,
+      //     comments: { type: Factor.$mongo.objectIdType(), ref: "comments" }
+      //   }
+      // })
+
+      // Factor.$filters.add("post-populated-fields", _ => {
+      //   _.push({ field: "comments", depth: 20 })
+      //   return _
+      // })
+
+      // global components
       Factor.$filters.add("components", components => {
         components["comments-list"] = () => import("./comments-list.vue")
+        components["comment-add"] = () => import("./comment-add.vue")
         return components
       })
 
-      Factor.$filters.add("post-schema", _ => {
-        return {
-          ..._,
-          comments: { type: Factor.$mongo.objectIdType(), ref: "comments" }
-        }
-      })
-
+      // dashboard panel component
       Factor.$filters.add("post-edit-components", _ => {
         _.push({
           name: "Comments",
-          component: () => import("./comments-panel.vue")
+          component: () => import("./comments-dashboard-panel.vue")
         })
 
         return _
