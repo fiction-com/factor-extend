@@ -1,7 +1,6 @@
 <template>
   <div class="">
     <div class="home">Hello!</div>
-    <comments-list post-id="fo0123" />
-    <comment-add post-id="fo0123" />
+    <commentizer post-id="5d64b6d02ea6ca601f09c476" />
   </div>
 </template>

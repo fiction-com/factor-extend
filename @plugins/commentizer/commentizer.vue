@@ -1,15 +1,16 @@
 <template>
-  <div class="single-entry">
-    add comment component
-    <!-- <div v-if="!$lodash.isEmpty(post)">
-      <component
+  <div class="commentizer">
+    <h1>Comments</h1>
+    <div v-if="!$lodash.isEmpty(post)">
+      <pre>{{post}}</pre>
+      <!-- <component
         :is="$setting.get(`blog.components.${comp}`)"
         v-for="(comp, i) in $setting.get('blog.layout.single')"
         :key="i"
         :post-id="post._id"
-      />
+      /> -->
     </div>
-    <error-404 v-else /> -->
+    <error-404 v-else />
   </div>
 </template>
 
@@ -24,6 +25,9 @@ export default {
   computed: {
     post() {
       return this.$store.val(this.postId) || {}
+    },
+    saveComment(v) {
+      console.log(this, v);
     }
   },
 }

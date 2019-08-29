@@ -12,6 +12,9 @@ export default {
     post() {
       return this.$store.val(this.postId) || {}
     },
+  },
+  mounted() {
+    console.log(this.post)
   }
 }
 </script>
