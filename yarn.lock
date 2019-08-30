@@ -767,10 +767,10 @@
     qs "^6.6.0"
     vue-router "^3.0.2"
 
-"@factor/app-settings@^1.0.0-alpha.27":
-  version "1.0.0-alpha.27"
-  resolved "https://registry.yarnpkg.com/@factor/app-settings/-/app-settings-1.0.0-alpha.27.tgz#a81c6e76127ae8bfdf41e08d0b367783d016b3c4"
-  integrity sha512-U6DuKbGIESTfqOoiIQVhmkl2t1EYl8qCVhLCLqRL6PAI3lcq6jGCiuxY0ez2bvkFtV/IfSAnwgduyONgz6inwA==
+"@factor/app-settings@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/app-settings/-/app-settings-1.0.0-alpha.30.tgz#052ec91d97412d1ae63b734f8d10a9a6d19e9cde"
+  integrity sha512-duqO9wBmOhaGTmXuCFVeGixO9WVa7TdngGg/FhTDXVWEYw9Umq+wsXrqORD3KL6HhhhJ1iEWDXw6rRIQMwYb6g==
 
 "@factor/app-store@^1.0.0-alpha.27":
   version "1.0.0-alpha.27"
@@ -779,15 +779,15 @@
   dependencies:
     vuex "^3.1.0"
 
-"@factor/app@^1.0.0-alpha.28":
-  version "1.0.0-alpha.28"
-  resolved "https://registry.yarnpkg.com/@factor/app/-/app-1.0.0-alpha.28.tgz#f35cbd8a0400876887b43d0ca974b5545b44f911"
-  integrity sha512-sf2dTivA+y42GhWIpL+ZAawzUQu3nhYABctD9CKHwx1Gkd1OANPwcx3QyFUi43xJlMg3vCFhSWEdexfj2sK9Ag==
+"@factor/app@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/app/-/app-1.0.0-alpha.30.tgz#c10d62a8cd34b70c092a3de12d3e22420180e84d"
+  integrity sha512-Ay6l+GhqV24kP2qsibxDHy6If7O3B++r8b17xJxRSSLNUzrkz0yxlICE+nc6EXHbkinRyD9I0t989+FpaVNHoQ==
   dependencies:
     "@factor/app-extend" "^1.0.0-alpha.28"
     "@factor/app-fallbacks" "^1.0.0-alpha.28"
     "@factor/app-router" "^1.0.0-alpha.27"
-    "@factor/app-settings" "^1.0.0-alpha.27"
+    "@factor/app-settings" "^1.0.0-alpha.30"
     "@factor/app-store" "^1.0.0-alpha.27"
     "@factor/cli" "^1.0.0-alpha.27"
     vue "^2.6.7"
@@ -911,10 +911,10 @@
     rimraf "^2.6.3"
     yargs "^13.2.2"
 
-"@factor/core-db@^1.0.0-alpha.28":
-  version "1.0.0-alpha.28"
-  resolved "https://registry.yarnpkg.com/@factor/core-db/-/core-db-1.0.0-alpha.28.tgz#8af5b9f5f2c9b7f3d047ccc66a0d2352b14b8e90"
-  integrity sha512-TaFFLr+QxEoDBnZF7GUb4x/48sv6Pd1YBjAyQzyt4Pp9JREGW5CsRplYbL4vbJCTvMfwYQ3kuSA8YOtQljx48w==
+"@factor/core-db@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/core-db/-/core-db-1.0.0-alpha.30.tgz#5c0df9b2c323fc0183f7f462a2344c3ef7991289"
+  integrity sha512-aRHedHmjtD9t8GWAO0F4kSMStcHtHXbRsTqwjbsIxe3dsmavB5xeM8+tLJbTWFbf1Dnb6390/v/CSa2oGnKeQQ==
   dependencies:
     mongodb "^3.2.7"
     mongoose "^5.6.0"
@@ -969,10 +969,10 @@
   dependencies:
     find-up "^4.1.0"
 
-"@factor/core-user-dashboard@^1.0.0-alpha.27":
-  version "1.0.0-alpha.27"
-  resolved "https://registry.yarnpkg.com/@factor/core-user-dashboard/-/core-user-dashboard-1.0.0-alpha.27.tgz#f77ec4ae868d29bf60c807408f35d1766479415e"
-  integrity sha512-cTHASuhSvdk818WXz38832sZ2EUdjaS+Ts+OhfBxj9Beow4Pl/7LLRfZkqkrNMrsXaX89kIJhtn9+OTpR7JipQ==
+"@factor/core-user-dashboard@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/core-user-dashboard/-/core-user-dashboard-1.0.0-alpha.30.tgz#3a7b187a00a1f76c672657e42c0efd6033e3ebe7"
+  integrity sha512-KVHMxBcTuPs5slIh78D2z/diRGkyMftB7JIbkADdOwr3IS4EC5bIw1yftUNeRlnBhUVfTVxZ/uvBp+i/1kpGAg==
 
 "@factor/core-user-emails@^1.0.0-alpha.27":
   version "1.0.0-alpha.27"
@@ -995,15 +995,15 @@
     email-validator "^2.0.4"
     jsonwebtoken "^8.5.1"
 
-"@factor/core@1.0.0-alpha.29", "@factor/core@^1.0.0-alpha.29":
-  version "1.0.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/@factor/core/-/core-1.0.0-alpha.29.tgz#59eadf0e1805b6d3da3caa02cb1d21f400eb18fb"
-  integrity sha512-cFrmXIPcbdax24OUbWLcrCppC5TWwYNORWQUTuBLMJyv8nS6vXidCj3xtXItS1sVZ7OgD8xdJFW5XPmrZ3vZjg==
+"@factor/core@1.0.0-alpha.30", "@factor/core@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/core/-/core-1.0.0-alpha.30.tgz#d96f5836cecc70dedb2425776054e2253fc3e541"
+  integrity sha512-xRGpMPwAKl6d5It8yfCiAFX6paNooRo1EoW9y9Br5NMvF/e9NAT4srGNF/8pEZ+/zU1iFTJufC405YzysrUtLw==
   dependencies:
-    "@factor/app" "^1.0.0-alpha.28"
+    "@factor/app" "^1.0.0-alpha.30"
     "@factor/build" "^1.0.0-alpha.28"
     "@factor/cli" "^1.0.0-alpha.27"
-    "@factor/core-db" "^1.0.0-alpha.28"
+    "@factor/core-db" "^1.0.0-alpha.30"
     "@factor/core-email" "^1.0.0-alpha.27"
     "@factor/core-endpoint" "^1.0.0-alpha.28"
     "@factor/core-error" "^1.0.0-alpha.27"
@@ -1012,24 +1012,24 @@
     "@factor/core-theme" "^1.0.0-alpha.29"
     "@factor/core-user" "^1.0.0-alpha.27"
     "@factor/plugin-ssr-bar" "^1.0.0-alpha.27"
-    "@factor/post" "^1.0.0-alpha.29"
+    "@factor/post" "^1.0.0-alpha.30"
     "@factor/server" "^1.0.0-alpha.27"
-    "@factor/tools" "^1.0.0-alpha.27"
+    "@factor/tools" "^1.0.0-alpha.30"
 
-"@factor/dashboard-signin@^1.0.0-alpha.29":
-  version "1.0.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/@factor/dashboard-signin/-/dashboard-signin-1.0.0-alpha.29.tgz#0f30f40398c91f7cdc3378734adbc01df877342b"
-  integrity sha512-VU/6hqfFG1IFmOyAU7uyZ4ZT1k/DP/8jdrtdJGjJ1nhtzcrwYaCkGdoL9CUCNnJ3hZeDQEQM9nVidUCaOyYJog==
+"@factor/dashboard-signin@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/dashboard-signin/-/dashboard-signin-1.0.0-alpha.30.tgz#144575d67bd01ecb8cdc52cd335f023011031d0f"
+  integrity sha512-37tKPWsF6i3wSsGV9PN149P4mUbcod09Bd/zSGz2pFE2V3I4fcSvll/mfqAJqudJGJH04nFUTH0bOyjcYHJ/NA==
   dependencies:
-    "@factor/ui" "^1.0.0-alpha.27"
+    "@factor/ui" "^1.0.0-alpha.30"
 
-"@factor/dashboard@^1.0.0-alpha.29":
-  version "1.0.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/@factor/dashboard/-/dashboard-1.0.0-alpha.29.tgz#b8a82d3e063a057420b10ce1d1a05f83dafa770d"
-  integrity sha512-7krAnQJ8xmz0+HOjr2uy96mcLDxSZeg889gHSySzqEixzmVDOxOjb6wvVHFnI4f/WW+tLck0mgMoV5oPMHY09Q==
+"@factor/dashboard@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/dashboard/-/dashboard-1.0.0-alpha.30.tgz#a27d9ab57481dcc48e8b44243a2c4ca0fd6d4c34"
+  integrity sha512-vrRdZkoX7rLr752bj6pxrsAWWzX1f/0QNgZWbaIHcJZUnrz2884v6N/v7aBIlGbCrUciDAWxs4onQaqjLU5W9A==
   dependencies:
-    "@factor/core-user-dashboard" "^1.0.0-alpha.27"
-    "@factor/dashboard-signin" "^1.0.0-alpha.29"
+    "@factor/core-user-dashboard" "^1.0.0-alpha.30"
+    "@factor/dashboard-signin" "^1.0.0-alpha.30"
     "@factor/ui-components-form" "^1.0.0-alpha.27"
     "@factor/ui-components-standard" "^1.0.0-alpha.27"
 
@@ -1055,19 +1055,19 @@
   resolved "https://registry.yarnpkg.com/@factor/post-page-templates/-/post-page-templates-1.0.0-alpha.27.tgz#b631b4ced67194774ba11ba800da970b0e4dbf17"
   integrity sha512-LCtlvCsUuzHkeMgtidbgb16lsrhT7FhhiUIRLNMmpZRS2RMUAb3m1r+VaWPyQxYRh9PRhEwptafPVc1yIYqIlg==
 
-"@factor/post@^1.0.0-alpha.29":
-  version "1.0.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/@factor/post/-/post-1.0.0-alpha.29.tgz#4d8dee6d61411c92eac8ac8b6523d6a33c56eee4"
-  integrity sha512-7FfYNQpUlo3Q3WrP7dbB1j6SPdC8zS/8/IJ8lUjmBZtIX7hpwY2XgnNWeELUJTGB9RXBxLZwHo2ry5h/J6LQ/Q==
+"@factor/post@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/post/-/post-1.0.0-alpha.30.tgz#db65b3217cd9f370d1bdf50fee56bbd4d58c94af"
+  integrity sha512-xGYh+29KqDHAA4yzVCceHzvEstTdHaipskmX647i3Q09mXnEiTFjRy11VFk3B3BbBIhxxg0TzqGbcptoFJW6EA==
   dependencies:
-    "@factor/app" "^1.0.0-alpha.28"
+    "@factor/app" "^1.0.0-alpha.30"
     "@factor/build" "^1.0.0-alpha.28"
-    "@factor/core" "^1.0.0-alpha.29"
-    "@factor/dashboard" "^1.0.0-alpha.29"
-    "@factor/dashboard-signin" "^1.0.0-alpha.29"
+    "@factor/core" "^1.0.0-alpha.30"
+    "@factor/dashboard" "^1.0.0-alpha.30"
+    "@factor/dashboard-signin" "^1.0.0-alpha.30"
     "@factor/metatags" "^1.0.0-alpha.27"
     "@factor/post-page-templates" "^1.0.0-alpha.27"
-    "@factor/ui" "^1.0.0-alpha.27"
+    "@factor/ui" "^1.0.0-alpha.30"
     jsonwebtoken "^8.5.1"
     object-hash "^1.3.1"
     scriptjs "^2.5.9"
@@ -1174,10 +1174,10 @@
     remark "^10.0.1"
     strip-markdown "^3.0.3"
 
-"@factor/tools-mongo@^1.0.0-alpha.27":
-  version "1.0.0-alpha.27"
-  resolved "https://registry.yarnpkg.com/@factor/tools-mongo/-/tools-mongo-1.0.0-alpha.27.tgz#56fe82201f125167342618ceb5dda58aff2c9893"
-  integrity sha512-qgxhZXjt1OV2lCJUt7N5dktt2LD/LySPb5I3IPfXWdu9BTR1KjnIm2OMZ42IkwCdeXmdPSyDSIRjkrgEWXeI2g==
+"@factor/tools-mongo@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/tools-mongo/-/tools-mongo-1.0.0-alpha.30.tgz#e2f49e1f544d612df54497d32f09b16c455e92bf"
+  integrity sha512-i5CgGL3B2snqaHvWzynYddy7sa1NaKcX1rt1+uayGkG5BZ2mRvMgNDHsp9JqIPHCJuzXzATUqAL2lPj0NFhrEQ==
   dependencies:
     mongodb "^3.2.7"
     mongoose "^5.6.0"
@@ -1190,14 +1190,14 @@
   dependencies:
     dayjs "^1.8.10"
 
-"@factor/tools@^1.0.0-alpha.27":
-  version "1.0.0-alpha.27"
-  resolved "https://registry.yarnpkg.com/@factor/tools/-/tools-1.0.0-alpha.27.tgz#3ec3377c9fa6fd2457062ab3f1af5250ac09d835"
-  integrity sha512-bMoDfyX8GHEVz+nIfVAzo9vZLjvxEYAAIIDI2L+yuGnVK2PnQnhT37M2oq2Z+Jt+7+LW8x5NznDEYxdvfShbAQ==
+"@factor/tools@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/tools/-/tools-1.0.0-alpha.30.tgz#b5982946fa7574091fd0b5277740bd6f4b1cd52c"
+  integrity sha512-yVXxRAPY4HGb015vChtpGPjuW491kR7M5+EjhE9XKRmCzo760lCviGerSTWW26A+rypmmT9xB/BZLLr5hNUfMw==
   dependencies:
     "@factor/tools-http" "^1.0.0-alpha.27"
     "@factor/tools-markdown" "^1.0.0-alpha.27"
-    "@factor/tools-mongo" "^1.0.0-alpha.27"
+    "@factor/tools-mongo" "^1.0.0-alpha.30"
     "@factor/tools-time" "^1.0.0-alpha.27"
     axios "^0.18.0"
     deepmerge "^3.2.0"
@@ -1232,12 +1232,12 @@
   dependencies:
     sanitize-html "^1.20.0"
 
-"@factor/ui@^1.0.0-alpha.27":
-  version "1.0.0-alpha.27"
-  resolved "https://registry.yarnpkg.com/@factor/ui/-/ui-1.0.0-alpha.27.tgz#fc2348b6b11a33b5b4ef03871c611bfde3b9a114"
-  integrity sha512-+td6Zku14EdP1FutisWJodVjQNg65Bzo7HAKLoZ0LFTd8I9GqwlknbOulIn/IBBW8yszTeC/qBTDBuaCMgO/uw==
+"@factor/ui@^1.0.0-alpha.30":
+  version "1.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@factor/ui/-/ui-1.0.0-alpha.30.tgz#abcd4617005996515ce8cb67dade0a93a913878b"
+  integrity sha512-htG9z7nkBxpw4rI5787LkaoVZkqrmDZZ0kwN8uNYw3sNHEN6McexSVZ1jjHDAYALxzG5QEjhlUHbJW7SoOSwmw==
   dependencies:
-    "@factor/tools" "^1.0.0-alpha.27"
+    "@factor/tools" "^1.0.0-alpha.30"
     "@factor/ui-components-form" "^1.0.0-alpha.27"
     "@factor/ui-components-standard" "^1.0.0-alpha.27"
     "@factor/ui-directives-standard" "^1.0.0-alpha.27"

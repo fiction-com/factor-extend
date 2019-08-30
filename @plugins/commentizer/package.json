@@ -1,7 +1,7 @@
 {
   "name": "@factor-plugins/commentizer",
   "author": "",
-  "version": "1.0.0-alpha.29",
+  "version": "1.0.0-alpha.30",
   "license": "GPL-2.0",
   "publishConfig": {
     "access": "public"

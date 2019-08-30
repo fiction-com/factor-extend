@@ -11,7 +11,7 @@
   "license": "GPL-2.0",
   "scripts": {},
   "dependencies": {
-    "@factor/core": "1.0.0-alpha.29"
+    "@factor/core": "1.0.0-alpha.30"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
