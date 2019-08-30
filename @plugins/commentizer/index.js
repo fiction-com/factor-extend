@@ -13,7 +13,8 @@ export default Factor => {
         namePlural: "All Comments",
         listTemplate: Factor.$setting.get("commentizer.components.commentizerDashboardList"),
         editTemplate: Factor.$setting.get("commentizer.components.commentizerDashboardEdit"),
-        add: false
+        add: false,
+        showAdmin: false
       })
 
       // Modify the schema for commentizer post types
