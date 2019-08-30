@@ -1,6 +1,11 @@
 <template>
-  <div class="comments-panel">
-    Comments panel
+  <div class="commentizer-dashboard-panel">
+    <div v-if="!$lodash.isEmpty(comments)">
+      {{comments}}
+    </div>
+    <div v-else>
+      Not found.
+    </div>
   </div>
 </template>
 <script>
@@ -9,16 +14,13 @@ export default {
     postId: { type: String, required: true },
   },
   computed: {
-    post() {
-      return this.$store.val(this.postId) || {}
+    comments() {
+      // return this.$store.val(this.postId) || {}
+      return this.$commentizer
     },
   },
   mounted() {
-    console.log(this.post)
+    console.log(this);
   }
 }
 </script>
-<style lang="less">
-.comments-panel {
-}
-</style>
