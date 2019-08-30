@@ -10,9 +10,10 @@ export default Factor => {
         postType: "commentizer",
         nameIndex: "Commentizer",
         nameSingle: "Comments",
-        namePlural: "Commentizer",
+        namePlural: "All Comments",
         listTemplate: Factor.$setting.get("commentizer.components.commentizerDashboardList"),
-        editTemplate: Factor.$setting.get("commentizer.components.commentizerDashboardEdit")
+        editTemplate: Factor.$setting.get("commentizer.components.commentizerDashboardEdit"),
+        add: false
       })
 
       // Modify the schema for commentizer post types
