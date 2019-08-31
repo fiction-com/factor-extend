@@ -10,6 +10,26 @@ export default Factor => {
         path: "/",
         component: () => import("./index.vue")
       })
+
+      // Factor.$filters.add("page-templates", _ => {
+      //   return _.concat([
+      //     {
+      //       name: "Default",
+      //       value: "default",
+      //       component: () => import("./tpl-default.vue")
+      //     }
+      //   ])
+      // })
+
+      // Factor.$filters.add("page-templates", _ => {
+      //   return _.concat([
+      //     {
+      //       name: "Default",
+      //       value: "default",
+      //       component: () => import("./page-template-default.vue")
+      //     }
+      //   ])
+      // })
     }
   })()
 }

@@ -1,24 +1,19 @@
 <template>
   <div class="commentizer">
-    <h1>Commentizer</h1>
-    <div v-if="!$lodash.isEmpty(comments)">
-      {{comments}}
-    </div>
-    <div v-else>
-      Not found.
-    </div>
+    <commentizerList :comments="comments" />
+    <commentizerAdd />
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    postId: { type: String, required: true },
+    postId: { type: String, required: true }
   },
   computed: {
-    comments() {
+    comments () {
       return this.$store.val(this.postId) || {}
-    },
-  },
+    }
+  }
 }
 </script>

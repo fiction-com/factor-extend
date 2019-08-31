@@ -1,5 +1,5 @@
 <template>
-  <dashboard-pane :title="title">
+  <div>
     <dashboard-table-controls
       v-bind="$attrs"
       :tabs="tabs"
@@ -8,34 +8,28 @@
       :meta="meta"
       :actions="controlActions"
       :loading="sending"
-      @action="$emit('action',{action: $event, selected})"
+      @action="$emit('action', { action: $event, selected })"
     />
     <dashboard-table
       class="commentizer-dashboard-list-table"
       :structure="tableStructure()"
       :row-items="tableList"
       @select-all="selectAll($event)"
-    >
-      <div>
-        foo
-      </div>
-    </dashboard-table>
-  </dashboard-pane>
+    />
+  </div>
 </template>
 <script>
 export default {
-  name: "commentizerDashboardList",
   props: {
-    title: { type: String, default: "" },
     list: { type: Array, default: () => [] },
     meta: { type: Object, default: () => {} },
-    loading: { type: Boolean, default: false },
-    sending: { type: Boolean, default: false }
   },
   data() {
     return {
+      loading: false,
+      loadingAction: false,
       selected: [],
-      loadingAction: false
+      sending: false,
     }
   },
   computed: {
