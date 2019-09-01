@@ -1,10 +1,26 @@
 <template>
-  <!-- <dashboard-pane> -->
   <div>
-    <dashboard-input v-model="commentizerEnabled" input="factor-input-checkbox" format="horizontal" label="Enabled" />
-    <commentizerDashboardList v-if="commentizerEnabled" :list="comments" :meta="meta"/>
+    <!-- TODO: manipulate checked state -->
+    <!-- <dashboard-input
+      input="factor-input-checkbox"
+      format="horizontal"
+      label="Enabled"
+      :checked="commentizerEnabled"
+      @change="commentizerEnabled = commentizerEnabled"
+    /> -->
+    <label for="Enabled">Enabled</label>
+    <input
+      type="checkbox"
+      name="Enabled"
+      :checked="commentizerEnabled"
+      @change="commentizerEnabled = !commentizerEnabled"
+    >
+    <commentizerDashboardList
+      v-show="commentizerEnabled"
+      :list="commentizerComments"
+      :meta="meta"
+    />
   </div>
-  <!-- </dashboard-pane> -->
 </template>
 <script>
 export default {
@@ -13,45 +29,63 @@ export default {
   },
   data() {
     return {
-      commentizerPost: null,
+      commentizerComments: [],
       commentizerEnabled: false,
+      commentizerPost: null,
       meta: {},
     }
   },
-  computed: {
-    comments() {
-      return this.commentizerPost ? this.commentizerPost.settings.comments : []
-    }
-  },
   watch: {
-    async commentizerEnabled(enabled) {
-      // If no commentizer post exists for this postId, create one
-      if (enabled && !this.commentizerPost) {
-        this.commentizerPost = await this.$commentizer.save({
-          enabled: true,
-          linkedPostId: this.postId,
-          comments: []
-        })
-        console.log('create', this.commentizerPost.settings)
-      } else {
-        this.commentizerPost = await this.$commentizer.save({
-          _id: this.postId,
-          enabled: false,
-          linkedPostId: this.postId,
-          comments: this.commentizerPost.settings.comments
-        })
-        console.log('update', this.commentizerPost.settings)
+    async commentizerEnabled(state) {
+      if (!this.commentizerPost) {
+        this.commentizerPost = await this.createCommentizerPost()
+      }
+
+      if (this.commentizerPost.settings && this.commentizerPost.settings.enabled !== state) {
+        // TODO: update post instead of create
+        // await this.updateCommentizerPost({ enabled: state })
+        this.commentizerPost.settings.enabled = false
+      }
+    },
+    commentizerPost(post) {
+      if (post && post.settings && post.settings.enabled) {
+        this.commentizerEnabled = true
+        this.commentizerComments = post.settings.comments || []
       }
     }
   },
   async mounted() {
-    // Check if comments have been enabled
     this.commentizerPost = await this.$post.getSinglePost({ field: "settings.linkedPostId", permalink: this.postId })
-    if (this.commentizerPost) {
-      this.commentizerEnabled = this.commentizerPost.settings.enabled
-    } else {
-      this.commentizerEnabled = false
+  },
+  methods: {
+    async createCommentizerPost() {
+      this.commentizerPost = await this.$commentizer.save({
+        postType: this.$commentizer.postType,
+        post: {
+          settings: {
+            comments: [],
+            enabled: true,
+            linkedPostId: this.postId,
+          }
+        }
+      })
+    },
+    async updateCommentizerPost(newSettings) {
+      const oldSettings = this.commentizerPost ? this.commentizerPost.settings : {}
+      const postId = { postId: oldSettings.postId }
+
+      // TODO: update post instead of create
+      // this.commentizerPost = await this.$commentizer.save({
+      //   postType: this.$commentizer.postType,
+      //   ...postId,
+      //   post: {
+      //     settings: {
+      //       ...oldSettings,
+      //       ...newSettings
+      //     }
+      //   },
+      // })
     }
-  }
+  },
 }
 </script>

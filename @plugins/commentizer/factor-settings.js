@@ -3,12 +3,12 @@ module.exports.default = Factor => {
     commentizer: {
       postTypes: ["page"],
       components: {
-        commentizer: () => import("./commentizer.vue"),
-        commentizerList: () => import("./commentizer-list.vue"),
-        commentizerAdd: () => import("./commentizer-add.vue"),
-        commentizerDashboardPanel: () => import("./commentizer-dashboard-panel.vue"),
-        commentizerDashboardList: () => import("./commentizer-dashboard-list.vue"),
-        commentizerDashboardEdit: () => import("./commentizer-dashboard-edit.vue")
+        commentizer: () => import("./commentizer"),
+        commentizerList: () => import("./commentizer-list"),
+        commentizerEdit: () => import("./commentizer-edit"),
+        commentizerDashboardPanel: () => import("./commentizer-dashboard-panel"),
+        commentizerDashboardList: () => import("./commentizer-dashboard-list"),
+        commentizerDashboardEdit: () => import("./commentizer-dashboard-edit")
       },
       confirm: {
         title: "Comment Added",

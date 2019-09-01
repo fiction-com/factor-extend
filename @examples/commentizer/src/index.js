@@ -8,15 +8,16 @@ export default Factor => {
 
       Factor.$filters.push("content-routes", {
         path: "/",
-        component: () => import("./index.vue")
+        component: () => import("./index")
       })
 
+      // TODO: override default page template (without a theme)
       // Factor.$filters.add("page-templates", _ => {
       //   return _.concat([
       //     {
       //       name: "Default",
       //       value: "default",
-      //       component: () => import("./tpl-default.vue")
+      //       component: () => import("./tpl-default")
       //     }
       //   ])
       // })
@@ -26,7 +27,7 @@ export default Factor => {
       //     {
       //       name: "Default",
       //       value: "default",
-      //       component: () => import("./page-template-default.vue")
+      //       component: () => import("./page-template-default")
       //     }
       //   ])
       // })
