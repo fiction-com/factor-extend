@@ -11,26 +11,15 @@ export default Factor => {
         component: () => import("./index")
       })
 
-      // TODO: override default page template (without a theme)
-      // Factor.$filters.add("page-templates", _ => {
-      //   return _.concat([
-      //     {
-      //       name: "Default",
-      //       value: "default",
-      //       component: () => import("./tpl-default")
-      //     }
-      //   ])
-      // })
-
-      // Factor.$filters.add("page-templates", _ => {
-      //   return _.concat([
-      //     {
-      //       name: "Default",
-      //       value: "default",
-      //       component: () => import("./page-template-default")
-      //     }
-      //   ])
-      // })
+      Factor.$filters.add("page-templates", _ => {
+        return _.concat([
+          {
+            name: "Commentizer Enabled",
+            value: "commentizer",
+            component: () => import("./commentizer-page-template")
+          }
+        ])
+      })
     }
   })()
 }

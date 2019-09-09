@@ -2,7 +2,7 @@
   <div class="long-form">
     <factor-post-edit :post-id="post._id" />
     <h1 v-formatted-text="post.title" class="title" />
-    <h2>Page template loading?</h2>
+    <h2>Commentizer Enabled Post</h2>
     <div v-formatted-text="$markdown.render(post.content)" class="content entry-content" />
   </div>
 </template>
