@@ -8,7 +8,7 @@ export default Factor => {
 
       Factor.$filters.push("content-routes", {
         path: "/",
-        component: () => import("./index")
+        component: () => import("./index.vue")
       })
 
       Factor.$filters.add("page-templates", _ => {
