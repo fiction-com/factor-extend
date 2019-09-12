@@ -1,8 +1,8 @@
 <template>
   <div class="long-form">
     <factor-post-edit :post-id="post._id" />
+    <h1>Commentizer page template, loading?</h1>
     <h1 v-formatted-text="post.title" class="title" />
-    <h2>Commentizer Enabled Post</h2>
     <div v-formatted-text="$markdown.render(post.content)" class="content entry-content" />
   </div>
 </template>
