@@ -1,35 +1,40 @@
 <template>
   <div>
-    <dashboard-table-controls
-      v-bind="$attrs"
-      :tabs="tabs"
-      filter="status"
-      :post-type="$commentizer.postType"
-      :meta="meta"
-      :actions="controlActions"
-      :loading="sending"
-      @action="$emit('action', { action: $event, selected })"
-    />
-    <dashboard-table
-      class="commentizer-dashboard-list-table"
-      :structure="tableStructure()"
-      :row-items="tableList"
-      @select-all="selectAll($event)"
-    />
+    <dashboard-grid-controls>
+      <dashboard-grid-actions
+        :actions="controlActions"
+        :loading="sending"
+        @action="handleAction($event)"
+      />
+      <dashboard-grid-filter filter-id="status" :filter-tabs="tabs" />
+    </dashboard-grid-controls>
+
+    <dashboard-grid :structure="grid()" :rows="list" @select-all="selectAll($event)">
+      <template #select="{value, row}">
+        <input v-model="selected" type="checkbox" class="checkbox" label :value="row._id" >
+      </template>
+      <template #listId="{row}">
+        <factor-link :path="`${$route.path}/edit`" :query="{_id: row._id}">{{ row.title }}</factor-link>
+      </template>
+      <template #emailCount="{row}">
+        {{ row.list.length }} / {{ row.list.filter(_ => _.verified).length }}
+      </template>
+    </dashboard-grid>
   </div>
 </template>
 <script>
 export default {
   props: {
+    postType: { type: String, default: "page" },
     list: { type: Array, default: () => [] },
     meta: { type: Object, default: () => {} },
+    loading: { type: Boolean, default: false },
+    sending: { type: Boolean, default: false }
   },
   data() {
     return {
-      loading: false,
       loadingAction: false,
       selected: [],
-      sending: false,
     }
   },
   computed: {
@@ -51,6 +56,7 @@ export default {
                 meta: this.meta,
                 key
               })
+
         return {
           name: this.$utils.toLabel(key),
           value: key == "all" ? "" : key,
@@ -68,6 +74,9 @@ export default {
     }
   },
   methods: {
+    handleAction(action) {
+      this.$emit("action", { action, selected: this.selected })
+    },
     selectAll(val) {
       this.selected = !val ? [] : this.list.map(_ => _._id)
     },
@@ -78,27 +87,21 @@ export default {
     postlink(postType, permalink, root = true) {
       return this.$post.getPermalink({ postType, permalink, root })
     },
-    tableStructure() {
+    grid() {
       return [
         {
-          column: "select",
-          class: "col-fixed-40",
-          mobile: "mcol-1"
+          _id: "select",
+          width: "40px"
         },
         {
-          column: "message",
-          class: "col-7",
-          mobile: "mco-7"
+          id: "message",
+          name: "message",
+          width: "minmax(100px, 1fr)"
         },
         {
-          column: "info",
-          class: "col-6",
-          mobile: "mcol-8"
-        },
-        {
-          column: "created",
-          class: "col-2",
-          mobile: "mcol-8"
+          _id: "info",
+          name: "info",
+          width: "170px"
         }
       ]
     }

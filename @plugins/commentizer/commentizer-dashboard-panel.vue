@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <dashboard-pane>
     <!-- TODO: manipulate checked state -->
     <!-- <dashboard-input
-      input="factor-input-checkbox"
-      format="horizontal"
-      label="Enabled"
-      :checked="commentizerEnabled"
-      @change="commentizerEnabled = commentizerEnabled"
+    input="factor-input-checkbox"
+    format="horizontal"
+    label="Enabled"
+    :checked="commentizerEnabled"
+    @change="commentizerEnabled = commentizerEnabled"
     /> -->
     <label for="Enabled">Enabled</label>
     <input
@@ -20,7 +20,7 @@
       :list="commentizerComments"
       :meta="meta"
     />
-  </div>
+  </dashboard-pane>
 </template>
 <script>
 export default {
