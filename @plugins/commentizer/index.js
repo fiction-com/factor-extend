@@ -1,57 +1,26 @@
 export default Factor => {
-  return new (class {
-    constructor () {
-      this.postType = "commentizer"
-      this.filters()
-    }
-
-    filters () {
+  return new(class {
+    constructor() {
       // Add commentizer post type
       Factor.$filters.push("post-types", {
-        postType: this.postType,
+        postType: "commentizer",
         nameIndex: "Commentizer",
-        nameSingle: "Comments",
-        namePlural: "All Comments",
+        nameSingle: "Comment",
+        namePlural: "Comments",
+        // showAdmin: false,
         add: false,
-        showAdmin: false
-        // schema: {
-        //   enabled: { type: Boolean },
-        //   linkedPostId: { type: String, trim: true },
-        //   comments: [{
-        //     email: { type: String, trim: true },
-        //     name: { type: String, trim: true },
-        //     comment: { type: String }
-        //   }]
-        // },
       })
 
-      // Extend data schema postTypes (in factor-settings.js) to include a commentizer post type
-      // Factor.$filters.push("data-schemas", {
-      //   name: Factor.$setting.get("commentizer.postTypes"),
-      //   callback: schema => {
-      //     schema.pre("save", async function (next) {
-      //       const myPost = this
-      //       this.settings = {}
-      //       next()
-      //     })
-      //   },
-      //   schema: {
-      //     commentizer: { type: Factor.$mongo.objectIdType(), ref: "commentizer" }
-      //   },
-      //   populatedFields: [
-      //     { field: "commentizer", depth: 10 }
-      //   ]
-      // })
-
-      // Add Dashboard components
-      Factor.$filters.add("post-edit-components", components => {
-        components.push({
-          name: "Comments",
-          component: Factor.$setting.get("commentizer.components.commentizerDashboardPanel"),
-          postType: Factor.$setting.get("commentizer.postTypes")
+      // Add dashboard component
+      Factor.$setting.get("commentizer.postTypes").forEach(postType => {
+        Factor.$filters.add("post-edit-components", components => {
+          components.push({
+            name: "commentizerDashboardPanel",
+            component: Factor.$setting.get("commentizer.components.commentizerDashboardPanel"),
+            postType: postType
+          })
+          return components
         })
-
-        return components
       })
 
       // Add global components
@@ -60,13 +29,28 @@ export default Factor => {
         components["commentizerList"] = Factor.$setting.get("commentizer.components.commentizerList")
         components["commentizerEdit"] = Factor.$setting.get("commentizer.components.commentizerEdit")
         components["commentizerDashboardList"] = Factor.$setting.get("commentizer.components.commentizerDashboardList")
-
         return components
+      })
+
+      const comment = this.createComment({
+        name: "foo",
+        email: "foo@bar.com",
+        comment: "foo was here!",
+        postId: "5d85e0e1fb9be524ffefd609"
       })
     }
 
-    async save (postData) {
-      return await Factor.$post.save(postData)
+    async createComment(commentData) {
+      return await Factor.$post.save({
+        postType: "commentizer",
+        post: {
+          name: commentData.name || "",
+          email: commentData.email || "",
+          comment: commentData.comment || "",
+          linkedPostId: commentData.postId
+        }
+      })
     }
+
   })()
 }

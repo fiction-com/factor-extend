@@ -1,7 +1,7 @@
 <template>
   <div class="commentizer">
     <commentizerList :comments="comments" />
-    <commentizerAdd />
+    <commentizerEdit />
   </div>
 </template>
 
@@ -12,6 +12,7 @@ export default {
   },
   computed: {
     comments () {
+      console.log(this)
       return this.$store.val(this.postId) || {}
     }
   }

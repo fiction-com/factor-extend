@@ -1,3 +1,11 @@
 export default Factor => {
-  return {}
+  return {
+    pageTemplates: {
+      templates: [{
+        name: "Commentizer Enabled",
+        _id: "commentizer-enabled",
+        component: () => import("./commentizer-page-template")
+      }]
+    }
+  }
 }

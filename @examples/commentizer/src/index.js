@@ -10,16 +10,6 @@ export default Factor => {
         path: "/",
         component: () => import("./index.vue")
       })
-
-      Factor.$filters.add("page-templates", _ => {
-        return _.concat([
-          {
-            name: "Commentizer Enabled",
-            value: "commentizer",
-            component: () => import("./commentizer-page-template")
-          }
-        ])
-      })
     }
   })()
 }
