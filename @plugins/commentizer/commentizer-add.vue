@@ -26,10 +26,7 @@
 <script>
 export default {
   props: {
-    linkedPostId: {
-      type: String,
-      required: true
-    }
+    postId: { type: String, required: true }
   },
   data() {
     return {
@@ -39,7 +36,12 @@ export default {
       sent: false
     }
   },
-  mounted() {
+  computed: {
+    post () {
+      return this.$store.val(this.postId) || {}
+    }
+  },
+  async mounted() {
     this.$watch(
       "form",
       function() {

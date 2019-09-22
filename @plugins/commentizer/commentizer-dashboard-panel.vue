@@ -15,7 +15,7 @@
       :checked="commentizerEnabled"
       @change="commentizerEnabled = !commentizerEnabled"
     >
-    <commentizerDashboardList v-show="commentizerEnabled" :comments="comments" />
+    <commentizerDashboardList v-show="commentizerEnabled" :post-id="postId" />
   </dashboard-pane>
 </template>
 <script>

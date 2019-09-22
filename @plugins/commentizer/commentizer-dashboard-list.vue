@@ -23,9 +23,9 @@
 <script>
 export default {
   props: {
-    loading: { type: Boolean, default: false },
-    comments: { type: Object, default: () => {} },
+    postId: { type: String, required: true },
     postType: { type: String, default: "page" },
+    loading: { type: Boolean, default: false },
     sending: { type: Boolean, default: false }
   },
   data() {
@@ -35,11 +35,20 @@ export default {
     }
   },
   computed: {
+    post() {
+      return this.$store.val(this.postId) || {}
+    },
+    comments() {
+      return this.post.commentizerComments || []
+    },
+    meta() {
+      return this.comments.meta || { total: 0 }
+    },
     tableList() {
-      return this.comments.posts.map(({ _id, createdAt, settings, comment, email, name }) => {
+      return this.comments.posts.map(({ _id, createdAt, settings, content, email, name }) => {
         return {
           ...settings,
-          comment,
+          content,
           createdAt,
           email,
           name,

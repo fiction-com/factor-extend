@@ -1,7 +1,7 @@
 <template>
   <div class="commentizer">
-    <commentizerList :comments="comments" />
-    <commentizerAdd :linked-post-id="postId" />
+    <commentizerDisplay :post-id="postId" />
+    <commentizerAdd :post-id="postId" />
   </div>
 </template>
 
@@ -9,18 +9,6 @@
 export default {
   props: {
     postId: { type: String, required: true }
-  },
-  data () {
-    return {
-      comments: {}
-    }
-  },
-  async created() {
-    this.comments = await this.$post.getPostIndex({
-      field: "linkedPostId",
-      permalink: this.postId,
-      postType: "commentizer"
-    }) || {}
   },
 }
 </script>
