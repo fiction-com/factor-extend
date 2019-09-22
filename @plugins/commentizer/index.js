@@ -1,7 +1,6 @@
 export default Factor => {
   return new(class {
     constructor() {
-
       // Add dashboard component
       Factor.$setting.get("commentizer.postTypes").forEach(postType => {
         Factor.$filters.add("post-edit-components", components => {
@@ -34,6 +33,5 @@ export default Factor => {
         }
       })
     }
-
   })()
 }

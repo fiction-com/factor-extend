@@ -11,7 +11,7 @@ export default Factor => {
         add: false,
       })
 
-      // Add a new commentizer post type schema - NOT WORKING YET!
+      // Add commentizer post type schema
       Factor.$filters.push("data-schemas", {
         name: "commentizer",
         schema: {
@@ -21,7 +21,7 @@ export default Factor => {
         }
       })
 
-      // Extend all postTypes from factor-settings to include a commentizer object
+      // Extend all postTypes listed in factor-settings with extra fields
       Factor.$setting.get("commentizer.postTypes").forEach(postType => {
         Factor.$filters.add(`data-schema-${postType}`, schemaConfig => {
           schemaConfig.schema = {
@@ -33,6 +33,7 @@ export default Factor => {
             }]
           }
 
+          // TODO: Fix - NOT WORKING!!!
           schemaConfig.populatedFields = [{ field: "commentizerComments", depth: 10 }]
           return schemaConfig
         })
