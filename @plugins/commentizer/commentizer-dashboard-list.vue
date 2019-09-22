@@ -1,23 +1,21 @@
 <template>
   <div>
     <dashboard-grid-controls>
-      <dashboard-grid-actions
-        :actions="controlActions"
-        :loading="sending"
-        @action="handleAction($event)"
-      />
+      <dashboard-grid-actions :actions="controlActions" :loading="sending" @action="handleAction($event)" />
       <dashboard-grid-filter filter-id="status" :filter-tabs="tabs" />
     </dashboard-grid-controls>
 
-    <dashboard-grid :structure="grid()" :rows="list" @select-all="selectAll($event)">
+    <dashboard-grid :structure="grid()" :rows="comments.posts" @select-all="selectAll($event)">
       <template #select="{value, row}">
-        <input v-model="selected" type="checkbox" class="checkbox" label :value="row._id" >
+        <input v-model="selected" type="checkbox" class="checkbox" label :value="row._id">
       </template>
       <template #listId="{row}">
-        <factor-link :path="`${$route.path}/edit`" :query="{_id: row._id}">{{ row.title }}</factor-link>
+        <factor-link :path="`${$route.path}/edit`" :query="{_id: row._id}">
+          {{ row.title }}
+        </factor-link>
       </template>
       <template #emailCount="{row}">
-        {{ row.list.length }} / {{ row.list.filter(_ => _.verified).length }}
+        {{ row.comments.posts.length }} / {{ row.comments.posts.filter(_ => _.verified).length }}
       </template>
     </dashboard-grid>
   </div>
@@ -25,37 +23,42 @@
 <script>
 export default {
   props: {
-    postType: { type: String, default: "page" },
-    list: { type: Array, default: () => [] },
-    meta: { type: Object, default: () => {} },
     loading: { type: Boolean, default: false },
+    comments: { type: Object, default: () => {} },
+    postType: { type: String, default: "page" },
     sending: { type: Boolean, default: false }
   },
   data() {
     return {
       loadingAction: false,
-      selected: [],
+      selected: []
     }
   },
   computed: {
     tableList() {
-      return this.list.map(({ _id, createdAt, settings }) => {
+      return this.comments.posts.map(({ _id, createdAt, settings, comment, email, name }) => {
         return {
           ...settings,
+          comment,
           createdAt,
+          email,
+          name,
           _id
         }
       })
     },
+    meta() {
+      return this.comments.meta || { total: 0 }
+    },
     tabs() {
       return [`all`, `trash`].map(key => {
         const count =
-          key == "all"
-            ? this.meta.total
-            : this.$post.getStatusCount({
-                meta: this.meta,
-                key
-              })
+          key == "all" ?
+          this.meta.total :
+          this.$post.getStatusCount({
+            meta: this.meta,
+            key
+          })
 
         return {
           name: this.$utils.toLabel(key),
@@ -75,32 +78,50 @@ export default {
   },
   methods: {
     handleAction(action) {
-      this.$emit("action", { action, selected: this.selected })
+      this.$emit("action", {
+        action,
+        selected: this.selected
+      })
     },
     selectAll(val) {
-      this.selected = !val ? [] : this.list.map(_ => _._id)
+      this.selected = !val ? [] : this.comments.posts.map(_ => _._id)
     },
     fields(item, type) {
-      const { message, createdAt, _id, ...rest } = item
+      const {
+        _id,
+        createdAt,
+        comment,
+        email,
+        name,
+        ...rest
+      } = item
       return Object.entries(rest).filter(([key, value]) => value)
     },
     postlink(postType, permalink, root = true) {
-      return this.$post.getPermalink({ postType, permalink, root })
+      return this.$post.getPermalink({
+        postType,
+        permalink,
+        root
+      })
     },
     grid() {
-      return [
-        {
+      return [{
           _id: "select",
           width: "40px"
         },
         {
-          id: "message",
-          name: "message",
+          _id: "comment",
+          name: "comment",
           width: "minmax(100px, 1fr)"
         },
         {
-          _id: "info",
-          name: "info",
+          _id: "name",
+          name: "name",
+          width: "170px"
+        },
+        {
+          _id: "email",
+          name: "email",
           width: "170px"
         }
       ]

@@ -15,11 +15,7 @@
       :checked="commentizerEnabled"
       @change="commentizerEnabled = !commentizerEnabled"
     >
-    <!-- <commentizerDashboardList
-      v-show="commentizerEnabled"
-      :list="commentizerComments"
-      :meta="meta"
-    /> -->
+    <commentizerDashboardList v-show="commentizerEnabled" :comments="comments" />
   </dashboard-pane>
 </template>
 <script>
@@ -27,58 +23,29 @@ export default {
   props: {
     postId: { type: String, required: true }
   },
-  data() {
+  data () {
     return {
-      // commentizerComments: [],
       commentizerEnabled: false,
-      // commentizerPost: null,
-      post: {},
-      // meta: {},
+      comments: {}
+    }
+  },
+  computed: {
+    post () {
+      return this.$store.val(this.postId) || {}
     }
   },
   watch: {
     async commentizerEnabled(state) {
-      // this.$post.savePost({
-      //   ...this.post,
-      //   commentizerEnabled: state
-      // })
-
-      // if (!this.commentizerPost) {
-      //   this.commentizerPost = await this.createCommentizerPost()
-      // }
-
-      // if (this.commentizerPost.settings && this.commentizerPost.settings.enabled !== state) {
-      //   // TODO: update post instead of create
-      //   // await this.updateCommentizerPost({ enabled: state })
-      //   this.commentizerPost.settings.enabled = false
-      // }
+      this.post.commentizer.enabled = state
     },
-    // commentizerPost(post) {
-    //   if (post && post.settings && post.settings.enabled) {
-    //     this.commentizerEnabled = true
-    //     this.commentizerComments = post.settings.comments || []
-    //   }
-    // }
   },
-  async mounted() {
-    this.post = await this.$post.getPostById({ _id: this.postId })
-    // this.commentizerEnabled = this.post.commentizerEnabled ? this.post.commentizerEnabled : false
-    console.log(this.post)
-    // this.$post.save({ post, postId })
-    // this.$post.savePost(post)
-    // this.commentizerPost = await this.$post.getSinglePost({ field: "settings.linkedPostId", permalink: this.postId })
+  async created() {
+    this.commentizerEnabled = this.post.commentizer.enabled ? this.post.commentizer.enabled : false
+    this.comments = await this.$post.getPostIndex({
+      field: "linkedPostId",
+      permalink: this.postId,
+      postType: "commentizer"
+    }) || {}
   },
-  methods: {
-    // async createCommentizerPost() {
-    //   this.commentizerPost = await this.$commentizer.save({
-    //     postType: "commentizer",
-    //     post: {
-    //       name: "",
-    //       email: "",
-    //       comment: ""
-    //     }
-    //   })
-    // }
-  }
 }
 </script>
