@@ -26,26 +26,20 @@ export default {
   data () {
     return {
       commentizerEnabled: false,
-      comments: {}
     }
   },
   computed: {
     post () {
       return this.$store.val(this.postId) || {}
-    }
+    },
   },
   watch: {
     async commentizerEnabled(state) {
-      this.post.commentizer.enabled = state
+      this.post.commentizerEnabled = state
     },
   },
   async created() {
-    this.commentizerEnabled = this.post.commentizer ? this.post.commentizer.enabled : false
-    this.comments = await this.$post.getPostIndex({
-      field: "linkedPostId",
-      permalink: this.postId,
-      postType: "commentizer"
-    }) || {}
+    this.commentizerEnabled = this.post.commentizerEnabled ? this.post.commentizerEnabled : false
   },
 }
 </script>

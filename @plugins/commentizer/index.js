@@ -1,15 +1,6 @@
 export default Factor => {
   return new(class {
     constructor() {
-      // Add commentizer post type
-      Factor.$filters.push("post-types", {
-        postType: "commentizer",
-        nameIndex: "Commentizer",
-        nameSingle: "Comment",
-        namePlural: "Comments",
-        showAdmin: false,
-        add: false,
-      })
 
       // Add dashboard component
       Factor.$setting.get("commentizer.postTypes").forEach(postType => {
@@ -27,7 +18,7 @@ export default Factor => {
       Factor.$filters.add("components", components => {
         components["commentizer"] = Factor.$setting.get("commentizer.components.commentizer")
         components["commentizerAdd"] = Factor.$setting.get("commentizer.components.commentizerAdd")
-        components["commentizerList"] = Factor.$setting.get("commentizer.components.commentizerList")
+        components["commentizerDisplay"] = Factor.$setting.get("commentizer.components.commentizerDisplay")
         components["commentizerDashboardList"] = Factor.$setting.get("commentizer.components.commentizerDashboardList")
         return components
       })
@@ -39,8 +30,7 @@ export default Factor => {
         post: {
           name: commentData.name || "",
           email: commentData.email || "",
-          comment: commentData.comment || "",
-          linkedPostId: commentData.linkedPostId
+          content: commentData.content || ""
         }
       })
     }

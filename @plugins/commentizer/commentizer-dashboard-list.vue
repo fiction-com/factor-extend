@@ -56,18 +56,12 @@ export default {
         }
       })
     },
-    meta() {
-      return this.comments.meta || { total: 0 }
-    },
     tabs() {
       return [`all`, `trash`].map(key => {
         const count =
           key == "all" ?
           this.meta.total :
-          this.$post.getStatusCount({
-            meta: this.meta,
-            key
-          })
+          this.$post.getStatusCount({ meta: this.meta, key })
 
         return {
           name: this.$utils.toLabel(key),
@@ -99,7 +93,7 @@ export default {
       const {
         _id,
         createdAt,
-        comment,
+        content,
         email,
         name,
         ...rest
