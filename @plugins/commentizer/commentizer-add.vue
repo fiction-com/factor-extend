@@ -55,10 +55,10 @@ export default {
   methods: {
     async send() {
       this.sending = true
-      await this.$commentizer.createComment({
-        linkedPostId: this.linkedPostId,
-        ...this.form
-      })
+
+      const newComment = await this.$commentizer.createComment(this.form)
+      this.post.commentizerComments.push(newComment._id)
+      this.$post.save({ post: this.post, postType: this.post.postType })
 
       this.sent = true
       this.sending = false
