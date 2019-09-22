@@ -40,7 +40,7 @@ export default Factor => {
           name: commentData.name || "",
           email: commentData.email || "",
           comment: commentData.comment || "",
-          linkedPostId: commentData.postId
+          linkedPostId: commentData.linkedPostId
         }
       })
     }

@@ -40,7 +40,7 @@ export default {
     },
   },
   async created() {
-    this.commentizerEnabled = this.post.commentizer.enabled ? this.post.commentizer.enabled : false
+    this.commentizerEnabled = this.post.commentizer ? this.post.commentizer.enabled : false
     this.comments = await this.$post.getPostIndex({
       field: "linkedPostId",
       permalink: this.postId,
