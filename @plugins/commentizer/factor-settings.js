@@ -5,18 +5,18 @@ module.exports.default = Factor => {
       components: {
         commentizer: () => import("./commentizer"),
         commentizerAdd: () => import("./commentizer-add"),
-        commentizerList: () => import("./commentizer-list"),
+        commentizerDisplay: () => import("./commentizer-display"),
         commentizerDashboardPanel: () => import("./commentizer-dashboard-panel"),
         commentizerDashboardList: () => import("./commentizer-dashboard-list"),
         commentizerDashboardEdit: () => import("./commentizer-dashboard-edit")
       },
+      displayText: "Comments",
+      submitText: "Submit Comment",
       confirm: {
         title: "Comment Added",
         subTitle: "Thank you for submitting a comment."
       },
       inputFormat: "horizontal",
-      listText: "Comments",
-      submitText: "Submit Comment",
       layout: [
         {
           label: "Name",
@@ -32,7 +32,7 @@ module.exports.default = Factor => {
         },
         {
           label: "Comment",
-          _id: "comment",
+          _id: "content",
           inputType: "textarea",
           required: true
         }
