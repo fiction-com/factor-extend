@@ -7,7 +7,7 @@ export default Factor => {
         nameIndex: "Commentizer",
         nameSingle: "Comment",
         namePlural: "Comments",
-        // showAdmin: false,
+        showAdmin: false,
         add: false,
       })
 
