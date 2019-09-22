@@ -10,11 +10,17 @@ export default {
   props: {
     postId: { type: String, required: true }
   },
-  computed: {
-    comments () {
-      console.log(this)
-      return this.$store.val(this.postId) || {}
+  data () {
+    return {
+      comments: {}
     }
-  }
+  },
+  async created() {
+    this.comments = await this.$post.getPostIndex({
+      field: "linkedPostId",
+      permalink: this.postId,
+      postType: "commentizer"
+    }) || {}
+  },
 }
 </script>
