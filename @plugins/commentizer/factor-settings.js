@@ -4,8 +4,8 @@ module.exports.default = Factor => {
       postTypes: ["page"],
       components: {
         commentizer: () => import("./commentizer"),
+        commentizerAdd: () => import("./commentizer-add"),
         commentizerList: () => import("./commentizer-list"),
-        commentizerEdit: () => import("./commentizer-edit"),
         commentizerDashboardPanel: () => import("./commentizer-dashboard-panel"),
         commentizerDashboardList: () => import("./commentizer-dashboard-list"),
         commentizerDashboardEdit: () => import("./commentizer-dashboard-edit")

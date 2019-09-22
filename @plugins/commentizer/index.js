@@ -26,17 +26,10 @@ export default Factor => {
       // Add global components
       Factor.$filters.add("components", components => {
         components["commentizer"] = Factor.$setting.get("commentizer.components.commentizer")
+        components["commentizerAdd"] = Factor.$setting.get("commentizer.components.commentizerAdd")
         components["commentizerList"] = Factor.$setting.get("commentizer.components.commentizerList")
-        components["commentizerEdit"] = Factor.$setting.get("commentizer.components.commentizerEdit")
         components["commentizerDashboardList"] = Factor.$setting.get("commentizer.components.commentizerDashboardList")
         return components
-      })
-
-      const comment = this.createComment({
-        name: "foo",
-        email: "foo@bar.com",
-        comment: "foo was here!",
-        postId: "5d85e0e1fb9be524ffefd609"
       })
     }
 

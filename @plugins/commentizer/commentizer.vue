@@ -1,7 +1,7 @@
 <template>
   <div class="commentizer">
     <commentizerList :comments="comments" />
-    <commentizerEdit />
+    <commentizerAdd :linked-post-id="postId" />
   </div>
 </template>
 
