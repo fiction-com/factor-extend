@@ -1,5 +1,7 @@
-Questions:
+## needs documentation
+  - dashboard components (<dashboard-input> checked state)
+  - CRUD with posts or db models
 
-- documentation on dashboard components (<dashboard-input> checked state)
-- populate comments into parent posts not working
-- more docs on CRUD with posts
+## not working
+  - add to cli setup utility (option does not appear in factor setup menu)
+  - populate comments into parent post
