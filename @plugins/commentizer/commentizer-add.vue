@@ -47,9 +47,8 @@ export default {
       function() {
         const v = this.$refs.form.$el.checkValidity()
         this.formStatus = v ? "valid" : "invalid"
-      }, {
-        deep: true
-      }
+      },
+      { deep: true }
     )
   },
   methods: {
@@ -59,6 +58,8 @@ export default {
       const newComment = await this.$commentizer.createComment(this.form)
       this.post.commentizerComments.push(newComment._id)
       this.$post.save({ post: this.post, postType: this.post.postType })
+
+      // TODO: refresh local store after save
 
       this.sent = true
       this.sending = false
