@@ -5,17 +5,18 @@
       <dashboard-grid-filter filter-id="status" :filter-tabs="tabs" />
     </dashboard-grid-controls>
 
-    <dashboard-grid :structure="grid()" :rows="comments.posts" @select-all="selectAll($event)">
+    <dashboard-grid :structure="grid()" :rows="comments" @select-all="selectAll($event)">
       <template #select="{value, row}">
         <input v-model="selected" type="checkbox" class="checkbox" label :value="row._id">
       </template>
-      <template #listId="{row}">
-        <factor-link :path="`${$route.path}/edit`" :query="{_id: row._id}">
-          {{ row.title }}
-        </factor-link>
+      <template #comment="{row}">
+        {{ row.content }}
       </template>
-      <template #emailCount="{row}">
-        {{ row.comments.posts.length }} / {{ row.comments.posts.filter(_ => _.verified).length }}
+      <template #name="{row}">
+        {{ row.name }}
+      </template>
+      <template #email="{row}">
+        {{ row.email }}
       </template>
     </dashboard-grid>
   </div>
@@ -30,6 +31,7 @@ export default {
   },
   data() {
     return {
+      comments: [],
       loadingAction: false,
       selected: []
     }
@@ -38,23 +40,13 @@ export default {
     post() {
       return this.$store.val(this.postId) || {}
     },
-    comments() {
-      return this.post.commentizerComments || []
-    },
+    // TODO: Fix - Requires population to work!
+    // comments() {
+    //   return this.post.commentizerComments || []
+    // },
+    // TODO: Fix - Fake meta data
     meta() {
-      return this.comments.meta || { total: 0 }
-    },
-    tableList() {
-      return this.comments.posts.map(({ _id, createdAt, settings, content, email, name }) => {
-        return {
-          ...settings,
-          content,
-          createdAt,
-          email,
-          name,
-          _id
-        }
-      })
+      return this.comments ? { total: this.comments.length } : { total: 0 }
     },
     tabs() {
       return [`all`, `trash`].map(key => {
@@ -72,12 +64,20 @@ export default {
     },
     controlActions() {
       return [
-        { value: "trash", name: "Move to Trash" },
+        { value: "trash", name: "Move to Trash", condition: query => query.status != "trash" },
         { value: "delete", name: "Permanently Delete" }
       ].filter(_ => {
         return _.value != this.$route.query.status
       })
     }
+  },
+  async created() {
+    // TODO: Fix - Manually populate comments
+    this.comments = await Promise.all(
+      this.post.commentizerComments.map(async id => {
+        return await this.$post.getPostById({ postType: "commentizer", _id: id })
+      })
+    )
   },
   methods: {
     handleAction(action) {
@@ -87,7 +87,7 @@ export default {
       })
     },
     selectAll(val) {
-      this.selected = !val ? [] : this.comments.posts.map(_ => _._id)
+      this.selected = !val ? [] : this.comments.map(_ => _._id)
     },
     fields(item, type) {
       const {

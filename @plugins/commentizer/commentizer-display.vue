@@ -2,8 +2,9 @@
   <div>
     <h2 v-text="$setting.get('commentizer.displayText')" />
     <div v-if="!$lodash.isEmpty(comments)">
-      <div v-for="(comment, i) in comments.posts" :key="`comment-${i}`">
-        <div class="commentizer-content" v-text="comment.content" />
+      <div v-for="(comment, i) in comments" :key="`comment-${i}`">
+        <span class="commentizer-content" v-text="comment.content" />
+        &mdash;
         <a :href="`mailto:${comment.email}`" v-text="comment.name" />
       </div>
     </div>
@@ -27,15 +28,18 @@ export default {
     post() {
       return this.$store.val(this.postId) || {}
     },
+    // TODO: Fix - Requires population to work!
     // comments() {
     //   return this.post.commentizerComments
     // }
   },
-  mounted() {
-    this.comments = this.post.commentizerComments.map(async id => {
-      return await this.$post.getPostById({ postType: "commentizer", _id: id })
-    })
-    console.log(this.comments)
-  }
+  async created() {
+    // TODO: Fix - Manually populate comments
+    this.comments = await Promise.all(
+      this.post.commentizerComments.map(async id => {
+        return await this.$post.getPostById({ postType: "commentizer", _id: id })
+      })
+    )
+  },
 }
 </script>
